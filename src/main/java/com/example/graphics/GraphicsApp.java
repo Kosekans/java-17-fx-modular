@@ -1,21 +1,20 @@
 package com.example.graphics;
 
-import com.example.calculator.Calculator;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class GraphicsApp extends Application {
-
-    Calculator calc = new Calculator();
-
+    private GraphicsAppController controller;
     @Override
     public void start(Stage primaryStage) {
         try {
-            BorderPane root = new BorderPane();
-            // root.setCenter(createInputPane());
-            Scene scene = new Scene(root,400,400);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("GraphicsApp_view.fxml"));
+            Parent rootLoader = loader.load();
+            controller = loader.getController();
+            Scene scene = new Scene(rootLoader,400,400);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Graphics App");
             primaryStage.show();
